@@ -72,10 +72,26 @@
     </section>
   </main>
 
-  <!-- 모달 틀: 2단계에서 숨기고, 사진을 누르면 열리게 연결 -->
-  <div id="modal">
+  <!-- 사진 모달: 기본은 숨김, 사진을 누르면 열리고 [닫기]로 닫힘 -->
+  <div id="modal" hidden>
     <div class="modal-photo"></div>
     <button type="button" id="close-btn">닫기</button>
   </div>
+
+  <script>
+    var modal = document.getElementById('modal');
+
+    // 사진(회색 박스)을 누르면 모달 열기
+    document.querySelectorAll('#photos .photo').forEach(function (photo) {
+      photo.addEventListener('click', function () {
+        modal.hidden = false;
+      });
+    });
+
+    // [닫기] 버튼을 누르면 모달 닫기
+    document.getElementById('close-btn').addEventListener('click', function () {
+      modal.hidden = true;
+    });
+  </script>
 </body>
 </html>
